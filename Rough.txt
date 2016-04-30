@@ -1,0 +1,17 @@
+App Name: Echoes
+Subtitle: Lost stories, around you.
+
+Core Functionality:
+- Allow users to post stories (title, body, hashtags, optional images)
+- Allow users to view stories based on the location he is in.
+- Allow users to view stories that his friends/followers have posted.
+- Allow users to view stories from locations in any place of the world (premium feature). //later.
+- Social integration - Twitter/Facebook Sign Up - Social sharing of stories with friends.
+
+v1.0
+----
+- USBAT post stories and attach it to the location that he is currently in.
+- USBAT view stories in the location that he is currently in. Nearby stories will be retrieved based on Friends - Popular - Latest (tabbed).
+- USBAT like stories and share in social media.
+
+Android - To be released on Play Store.

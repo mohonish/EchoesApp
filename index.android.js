@@ -8,23 +8,21 @@ import React, {
   Component,
   StyleSheet,
   Text,
+  Image,
   View
 } from 'react-native';
 
 class Echoes extends Component {
   render() {
     return (
-      <View style={styles.container}>
+      <Image style={styles.backgroundFillImage} source={require('./back1.jpg')}>
         <Text style={styles.welcome}>
-          Welcome to React Native!
+          Echoes
         </Text>
         <Text style={styles.instructions}>
-          To get started, edit index.android.js
+          Listening for echoes near you.
         </Text>
-        <Text style={styles.instructions}>
-          Shake or press menu button for dev menu
-        </Text>
-      </View>
+      </Image>
     );
   }
 }
@@ -41,11 +39,14 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     margin: 10,
   },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
+  backgroundFillImage: {
+    flex: 1,
+    resizeMode: 'cover',
+    justifyContent: 'center',
+    alignItems: 'center',
+    width: null,
+    height: null
+  }
 });
 
 AppRegistry.registerComponent('Echoes', () => Echoes);
