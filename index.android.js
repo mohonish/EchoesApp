@@ -7,12 +7,14 @@ import React, {
   View
 } from 'react-native';
 
+var ProgressBar = require('ProgressBarAndroid');
+
 class Echoes extends Component {
 
   constructor(props) {
     super(props);
     this.state = {
-      location: 'you'
+      location: ''
     };
   }
 
@@ -23,7 +25,6 @@ class Echoes extends Component {
         this.setState({location: initPosition});
       },
       (error) => {
-        debugger;
         alert(error.message);
       },
       {
@@ -33,32 +34,38 @@ class Echoes extends Component {
       }
     );
   }
-  
+
   render() {
     return (
-      <Image style={styles.backgroundFillImage} source={require('./back1.jpg')}>
-        <View style={styles.introView}>
-          <Text style={styles.logo}>Echoes</Text>
-          <Text style={styles.status}>Listening for echoes near {this.state.location}</Text>
-        </View>
-      </Image>
+      <View style={styles.container} >
+        <Image style={styles.backgroundFillImage} source={require('./back1.jpg')}>
+          <View style={styles.introView}>
+            <Text style={styles.logo}>Echoes</Text>
+            <Text style={styles.status}>Listening for echoes near you - {this.state.location}</Text>
+            <ProgressBar style={styles.progress} styleAttr="Horizontal" indeterminate={true} />
+          </View>
+        </Image>
+      </View>
     );
   }
 }
 
 const styles = StyleSheet.create({
+  container: {
+    flex: 1
+  },
   introView: {
     flex: 1,
     alignItems: 'center',
     flexDirection: 'column',
     alignSelf: 'flex-end',
-    padding: 30,
+    padding: 0
   },
   logo: {
     fontSize: 20,
     textAlign: 'center',
     margin: 10,
-    color: '#FFFFFF',
+    color: '#FFFFFF'
   },
   status: {
     fontSize: 13,
@@ -66,14 +73,19 @@ const styles = StyleSheet.create({
     margin: 10,
     color: '#FFFFFF'
   },
+  progress: {
+    alignSelf: 'stretch',
+    padding: 0,
+    margin: 0,
+    marginBottom: -7
+  },
   backgroundFillImage: {
     flex: 1,
     flexDirection: 'row',
-    resizeMode: 'cover',
     justifyContent: 'center',
     alignItems: 'center',
     width: null,
-    height: null,
+    height: null
   }
 });
 
