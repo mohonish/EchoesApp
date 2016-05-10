@@ -7,8 +7,29 @@ import React, {
   View
 } from 'react-native';
 
+var Navigator = require('Navigator');
 var ProgressBar = require('ProgressBarAndroid');
 var ToastAndroid = require('ToastAndroid');
+
+class Navigation extends Component {
+
+  render() {
+    return (
+      <Navigator style={styles.container}
+        initialRoute={{name: 'Echoes', index: 0}}
+        renderScene={this.navigatorRenderScene}
+      />
+    );
+  }
+
+  navigatorRenderScene(route, navigator) {
+    switch (route.index) {
+      case 0:
+      return (<Echoes navigator={navigator} title="first" />);
+    }
+  }
+
+}
 
 class Echoes extends Component {
 
