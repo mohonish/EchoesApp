@@ -8,31 +8,55 @@ import React, {
 } from 'react-native';
 
 var ProgressBar = require('ProgressBarAndroid');
+var ToastAndroid = require('ToastAndroid');
 
 class Echoes extends Component {
 
   constructor(props) {
     super(props);
     this.state = {
-      location: ''
+      location: {
+        latitude: '',
+        longitude: ''
+      }
     };
+    this.watchID = null;
   }
 
   componentDidMount() {
     navigator.geolocation.getCurrentPosition(
       (pos) => {
         var initPosition = JSON.stringify(pos);
-        this.setState({location: initPosition});
+        this.setState({
+          location: {
+            latitude: pos.coords.latitude,
+            longitude: pos.coords.longitude
+          }
+        });
       },
       (error) => {
-        alert(error.message);
+        ToastAndroid.show(error, ToastAndroid.SHORT);
       },
       {
         enableHighAccuracy: true,
-        timeout: 20000,
+        timeout: 50000,
         maximumAge: 1000
       }
     );
+
+    this.watchID = navigator.geolocation.watchPosition((position) => {
+      this.setState({
+        location: {
+          latitude: position.coords.latitude,
+          longitude: position.coords.longitude
+        }
+      });
+    });
+
+  }
+
+  componentWillUnmount() {
+    navigator.geolocation.clearWatch(this.watchID);
   }
 
   render() {
@@ -41,7 +65,7 @@ class Echoes extends Component {
         <Image style={styles.backgroundFillImage} source={require('./back1.jpg')}>
           <View style={styles.introView}>
             <Text style={styles.logo}>Echoes</Text>
-            <Text style={styles.status}>Listening for echoes near you - {this.state.location}</Text>
+            <Text style={styles.status}>Listening for echoes near you - {this.state.location.latitude} - {this.state.location.longitude} </Text>
             <ProgressBar style={styles.progress} styleAttr="Horizontal" indeterminate={true} />
           </View>
         </Image>
