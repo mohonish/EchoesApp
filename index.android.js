@@ -21,7 +21,8 @@ class Echoes extends Component {
   navigatorRenderScene(route, navigator) {
     switch (route.index) {
       case 0:
-      return (<AppLoader navigator={navigator} />);
+      //return (<AppLoader navigator={navigator} />);
+      return (<EchoBrowser navigator={navigator} />);
       case 1:
       return (<EchoBrowser navigator={navigator} />);
     }

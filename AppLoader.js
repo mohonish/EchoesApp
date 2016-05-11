@@ -51,7 +51,6 @@ class AppLoader extends Component {
         }
       });
       console.log("got location. moving to EchoBrowser");
-      debugger;
       this.props.navigator.push({index: 1});
     });
 

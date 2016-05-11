@@ -4,6 +4,8 @@ import React, {
   Text
 } from 'react-native';
 
+var EchoList = require('./EchoList');
+
 var MOCK_ECHOES_DATA = [
   {title: 'Hello World', body: 'Lorem Ipsum Dolor Sit Amet', from: 'Storyteller', createDate: 'Someday' }
 ];
@@ -24,7 +26,7 @@ class EchoBrowser extends Component {
   render() {
     return (
       <View>
-        <Text>Hello World from EchoBrowser</Text>
+        <EchoList />
       </View>
     );
   }
