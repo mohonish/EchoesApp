@@ -4,6 +4,10 @@ import React, {
   Text
 } from 'react-native';
 
+var MOCK_ECHOES_DATA = [
+  {title: 'Hello World', body: 'Lorem Ipsum Dolor Sit Amet', from: 'Storyteller', createDate: 'Someday' }
+];
+
 class EchoBrowser extends Component {
 
   constructor(props) {
